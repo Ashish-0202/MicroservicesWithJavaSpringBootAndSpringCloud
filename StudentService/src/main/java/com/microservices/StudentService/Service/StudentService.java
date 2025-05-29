@@ -23,7 +23,7 @@ public class StudentService {
     private WebClient webClient;
 
     @Autowired
-    private FeignClientConfig feignClientConfig;
+    private CommonService commonService;
 
     public StudentResponse findById(long id) {
         Optional<student> s1=studentRepository.findById(id);
@@ -48,7 +48,7 @@ public class StudentService {
     }
 
     public AddressResponse getById(long id){
-        AddressResponse addressResponse = feignClientConfig.ADDRESS_RESPONSE(id);
+        AddressResponse addressResponse = commonService.getAddByID(id);
         return addressResponse;
     }
 }
